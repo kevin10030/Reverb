@@ -1,0 +1,106 @@
+= 金山云画中画版本使用说明
+
+* 基于KSYStreamerSDK实现画中画相关的功能。
+* 该功能允许用户以背景图片作为最底层背景，视频作为第二层背景，可设置位置、大小的摄像头内容作为最上层来预览、推流。
+* 其中，最底层的背景图片以crop_fit的方式占满屏幕，第二层的视频则进行保持比例的缩放，最上层摄像头内容可以动态调整位置及大小。
+* 支持的播放格式可参看: https://github.com/ksvc/KSYMediaPlayer_Android
+
+效果如下图所示：
+
+image::https://raw.githubusercontent.com/wiki/ksvc/KSYDiversityLive_Android/images/pip-screencapture.png[]
+
+== 运行环境
+
+* 硬编模式下最低支持版本为Android 4.3，软编模式下为Android 4.4
+* 支持的cpu架构：armv7, arm64, x86
+
+== 工程代码结构
+
+当前工程依赖于KSYStreamerSDK，相关依赖已在gradle文件中声明。
+
+画中画的包名为com.ksyun.media.diversity.pipstreamer, 包含以下内容：
+
+* capture: 将图片、视频内容转换为Texture内容，传递给SDK进行处理
+** capture/MediaPlayerCapture.java: 视频内容采集模块
+** capture/PictureCapture: 图片内容采集模块
+* kit: 画中画相关功能的封装
+** kit/KSYPipStreamer: 添加了画中画功能的KSYStreamer类
+* demo: 画中画kit类KSYPipStreamer的使用例程
+
+== 画中画相关功能使用说明
+
+具体可参考工程中的 `com.ksyun.media.diversity.pipstreamer.demo.PipActivity` 类.
+
+. 开始画中画
++
+[source, java]
+----
+// 配置视频播放器
+mStreamer.getMediaPlayerCapture().getMediaPlayer()
+        .setOnCompletionListener(new IMediaPlayer.OnCompletionListener() {
+    @Override
+    public void onCompletion(IMediaPlayer iMediaPlayer) {
+        Log.d(TAG, "End of the currently playing video");
+        mStreamer.showBgVideo(mPipPath);
+    }
+});
+mStreamer.getMediaPlayerCapture().getMediaPlayer()
+        .setOnErrorListener(new IMediaPlayer.OnErrorListener() {
+            @Override
+            public boolean onError(IMediaPlayer iMediaPlayer, int what, int extra) {
+                Log.e(TAG, "MediaPlayer error, what=" + what + " extra=" + extra);
+                return false;
+            }
+        });
+// 显示图片背景层
+mStreamer.showBgPicture(this, mBgPicPath);
+// 显示视频背景层
+mStreamer.showBgVideo(mPipPath);
+// 设置画中画音量
+mStreamer.getMediaPlayerCapture().getMediaPlayer().setVolume(0.4f, 0.4f);
+// 配置摄像头内容悬浮窗的位置及大小
+mStreamer.setCameraPreviewRect(0.65f, 0.f, 0.35f, 0.3f);
+
+// 因为摄像头内容不再是全屏，这里禁用触摸对焦
+mCameraTouchHelper.setEnableTouchFocus(false);
+----
++
+. 停止画中画
++
+[source, java]
+----
+// 隐藏背景图片
+mStreamer.hideBgPicture();
+// 隐藏视频背景
+mStreamer.hideBgVideo();
+// 恢复摄像头预览区域
+mStreamer.setCameraPreviewRect(0.f, 0.f, 1.f, 1.f);
+
+// 重新使能触摸对焦
+mCameraTouchHelper.setEnableTouchFocus(true);
+----
++
+. 前后台切换相关处理
++
+[source, java]
+----
+@Override
+public void onPause() {
+    // ...
+    if (mPipMode) {
+        mStreamer.getMediaPlayerCapture().getMediaPlayer().pause();
+        mStreamer.getPictureCapture().stop();
+    }
+    // ...
+}
+
+@Override
+public void onResume() {
+    // ...
+    if (mPipMode) {
+        mStreamer.getMediaPlayerCapture().getMediaPlayer().start();
+        mStreamer.getPictureCapture().start(this, mBgPicPath);
+    }
+    // ...
+}
+----

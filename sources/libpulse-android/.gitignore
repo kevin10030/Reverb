@@ -1,0 +1,7 @@
+gen
+bin
+obj
+libs
+.classpath
+lint.xml
+build
