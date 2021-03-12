@@ -1,0 +1,94 @@
+<resources>
+    <string name="app_name">Booky McBookface</string>
+    <string name="book_viewed_on">Bekeken op %s</string>
+    <string name="book_added_on">Toegevoegd op %s</string>
+    <string name="add">Boek toevoegen</string>
+    <string name="add_dir">Boeken toevoegen uit map</string>
+    <string name="contents">Inhoud</string>
+    <string name="zoom">zoomen</string>
+    <string name="already_added">Het bestand \"%s\" is al toegevoegd</string>
+    <string name="select_thisfolder">Deze map selecteren</string>
+    <string name="cancel">Annuleren</string>
+    <string name="find_folder">Map zoeken</string>
+    <string name="find_book">Boek zoeken</string>
+    <string name="open_book">Boek openen</string>
+    <string name="close_book">Boek sluiten</string>
+    <string name="remove_book">Boek verwijderen</string>
+    <string name="coulndt_add_book">\"%s\" kan niet worden toegevoegd</string>
+
+    <string name="book_status_completed">Voltooid %s</string>
+    <string name="book_status_later">Later (%s)</string>
+    <string name="book_status_later2">Boeken gemarkeerd als \'"Voor later"\'</string>
+    <string name="book_status_completed2">Boeken gemarkeerd als \'"Voltooid"\'</string>
+    <string name="book_status_any">Alle boeken</string>
+    <string name="book_status_started">Geopende boeken</string>
+    <string name="book_status_none">Ongelezen boeken</string>
+    <string name="mark">Toon…</string>
+    <string name="un_mark">Markering verwijderen</string>
+    <string name="mark_later">Markeren als \'"Voor later"\'</string>
+    <string name="mark_completed">Markeren als \'"Voltooid"\'</string>
+
+    <string name="about">Over</string>
+    <string name="about_app">
+        <![CDATA[
+
+        Booky McBookface is open-bronsoftware, uitgebracht onder de GPLv3-licentie.\n\n
+
+        Hulp, de volledige license en sourcecode zijn beschikbaar op \n
+        https://github.com/quaap/BookyMcBookface\n\n
+
+        Deze app is geschreven door Tom Kliethermes.
+        ]]>
+    </string>
+    <string name="sort">Sortering</string>
+    <string name="sort_by_added_date">Sort by added</string>
+    <string name="sort_by_title">Sorteren op titel</string>
+    <string name="sort_by_author">Sorteren op auteur</string>
+    <string name="books_added">%d boeken toegevoegd</string>
+    <string name="bright">Licht</string>
+    <string name="dim">Donker</string>
+    <string name="bright_medium">Normaal</string>
+    <string name="book_default">Boekstandaard</string>
+    <string name="no_toc_found">Geen inhoudsopgave gevonden</string>
+    <string name="added_numbooks">%d toegevoegd</string>
+    <string name="loading">Bezig met laden…</string>
+    <string name="find_books_online">Online naar boeken zoeken</string>
+    <string name="source_name">Bronnaam</string>
+    <string name="web_url">URL</string>
+    <string name="web_add">Toevoegen</string>
+    <string name="getbooks_desc">De onderstaande links worden geopend in je webbrowser. Gedownloade boeken worden opgeslagen in de standaardlocatie van de webbrowser.</string>
+    <string name="new_websrc">Nieuw</string>
+    <string name="search_for">Zoeken naar:</string>
+    <string name="hint_search_text">De ontdekking van de hemel</string>
+
+    <string name="search_res_title">Zoeken naar \'%1$s\' (%2$d)</string>
+    <string name="title">Titel</string>
+    <string name="author">Auteur</string>
+    <string name="both">Beiden</string>
+    <string name="search_your_books">Doorzoek je boeken</string>
+    <string name="start_options">Start options</string>
+    <string name="last_read">Last read</string>
+    <string name="shortcut_latest">Continue reading</string>
+    <string name="shortcut_latest_title">Read %s</string>
+    <string name="book_bug">Something went wrong. Please report this book as a bug.</string>
+
+    <string name="enable_screen_paging">Enable screen paging</string>
+    <string name="enable_scroll">Enable drag scroll</string>
+
+
+    <!-- if your language/country has its own sites change or add them here -->
+    <string-array name="getbook_names">
+        <item>Project Gutenberg</item>
+        <item>Archive.org</item>
+    </string-array>
+
+    <string-array name="getbook_urls">
+        <item>http://m.gutenberg.org/</item>
+        <item>https://archive.org/details/texts</item>
+    </string-array>
+    <string name="sort_by_default">Standaardsortering</string>
+    <string name="auto_bright">Auto</string>
+    <string name="options">Options</string>
+
+
+</resources>
