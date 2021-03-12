@@ -1,0 +1,39 @@
+allprojects {
+    repositories {
+        jcenter()
+    }
+}
+
+ext {
+    //Android
+    androidBuildToolsVersion = "28.0.3"
+    androidMinSdkVersion = 16
+    androidTargetSdkVersion = 28
+    androidCompileSdkVersion = 28
+    supportLibraryVersion = '1.0.0-beta01'
+
+    //ViewLibraries
+    butterKnifeVersion = '10.1.0'
+    videocache = '2.7.1'
+
+
+    permissionsdispatcher = '4.3.0'
+
+    androidDependencies = [
+            recyclerView: "androidx.recyclerview:recyclerview:${supportLibraryVersion}",
+            appcompat_v7: "androidx.appcompat:appcompat:${supportLibraryVersion}",
+            support_v4  : "androidx.legacy:legacy-support-v4:${supportLibraryVersion}",
+            design      : "com.google.android.material:material:${supportLibraryVersion}",
+    ]
+
+    viewDependencies = [
+            butterKnife     : "com.jakewharton:butterknife:${butterKnifeVersion}",
+            apt_butterKnife : "com.jakewharton:butterknife-compiler:${butterKnifeVersion}",
+            videocache: "com.danikula:videocache:${videocache}",
+    ]
+
+    dataDependencies = [
+            permissionsdispatcher         : "org.permissionsdispatcher:permissionsdispatcher:${permissionsdispatcher}",
+            permissionsdispatcherProcessor: "org.permissionsdispatcher:permissionsdispatcher-processor:${permissionsdispatcher}",
+    ]
+}
